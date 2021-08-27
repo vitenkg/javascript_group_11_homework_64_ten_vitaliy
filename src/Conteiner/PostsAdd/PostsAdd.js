@@ -9,8 +9,6 @@ const PostsAdd = ({history}) => {
 
     const onSubmitHandle = async e => {
         e.preventDefault()
-        console.log('отправили');
-        console.log(newPost);
         try {
             await axiosApi.post('/posts.json', {
                 data,

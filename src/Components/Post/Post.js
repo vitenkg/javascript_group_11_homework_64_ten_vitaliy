@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axiosApi from "../../AxiosApi";
 
 const Post = ({match, history}) => {
-        console.log(match.params.id);
         const [post, setPost] = useState(null);
         const url = '/posts/' + match.params.id + '.json';
 
@@ -13,7 +12,7 @@ const Post = ({match, history}) => {
             }
 
             fetchData().catch(console.error);
-        }, [match.params.id]);
+        }, [url]);
 
         const onSubmitHandle = async e => {
             e.preventDefault();

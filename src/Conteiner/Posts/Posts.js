@@ -31,7 +31,6 @@ const Posts = () => {
     }, []);
 
     const onClickHandler = (id) => {
-        console.log(id);
         history.replace('/posts/' + id);
     }
 

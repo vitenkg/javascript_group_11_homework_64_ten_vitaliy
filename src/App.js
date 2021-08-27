@@ -8,11 +8,12 @@ import PostsAdd from "./Conteiner/PostsAdd/PostsAdd";
 import Post from "./Components/Post/Post";
 
 function App() {
+
   return (
       <div className="Container">
           <BrowserRouter>
               <div className="Header">
-                  <p className="NaviHeader">My Blog</p>
+                  <p className="NaviHeader"><NavLink exact to="/" style={{textDecoration: 'none'}} >My Blog</NavLink></p>
                   <ul>
                       <li><NavLink exact to="/">Home</NavLink></li>
                       <li><NavLink to="/posts/add">Add</NavLink></li>

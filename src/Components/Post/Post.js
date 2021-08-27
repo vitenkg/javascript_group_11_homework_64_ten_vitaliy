@@ -15,8 +15,17 @@ const Post = ({match, history}) => {
             fetchData().catch(console.error);
         }, [match.params.id]);
 
-        const onSubmitHandle = e => {
+        const onSubmitHandle = async e => {
             e.preventDefault();
+            try {
+                await axiosApi.put(url, {
+                    data: post.data,
+                    title: post.title,
+                    text: post.text
+                });
+            } finally {
+                history.replace('/');
+            }
 
         };
 
@@ -27,7 +36,6 @@ const Post = ({match, history}) => {
                 history.replace('/');
             }
         };
-
 
         return post && (
             <form onSubmit={e => onSubmitHandle(e)}>

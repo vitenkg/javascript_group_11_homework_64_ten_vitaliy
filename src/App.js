@@ -5,6 +5,7 @@ import Posts from "./Conteiner/Posts/Posts";
 import About from "./Conteiner/About/About";
 import Contacts from "./Conteiner/Contacts/Contacts";
 import PostsAdd from "./Conteiner/PostsAdd/PostsAdd";
+import Post from "./Components/Post/Post";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
               <Switch>
                   <Route path="/" exact component={Home}/>
                   <Route path="/posts/add" component={PostsAdd}/>
-                  {/*<Route path="/posts/:id" component={Posts}/>*/}
+                  <Route path="/posts/:id" component={Post}/>
+                  <Route path="/posts/" component={Posts}/>
                   <Route path="/about" component={About}/>
                   <Route path="/contacts" component={Contacts}/>
                   <Route render={()=><h1>NotFound</h1>}/>

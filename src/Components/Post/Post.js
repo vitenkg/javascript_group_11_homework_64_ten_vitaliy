@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import axiosApi from "../../AxiosApi";
 
-const Post = ({match}) => {
+const Post = ({match, history}) => {
         console.log(match.params.id);
         const [post, setPost] = useState(null);
+        const url = '/posts/' + match.params.id + '.json';
 
         useEffect(() => {
             const fetchData = async () => {
-                const response = await axiosApi.get('/posts/' + match.params.id + '.json');
+                const response = await axiosApi.get(url);
                 setPost({title: response.data.title, text: response.data.text, data: response.data.data});
             }
 
@@ -17,7 +18,15 @@ const Post = ({match}) => {
         const onSubmitHandle = e => {
             e.preventDefault();
 
-        }
+        };
+
+        const onDeleteHandler = async () => {
+            try {
+                await axiosApi.delete(url);
+            } finally {
+                history.replace('/');
+            }
+        };
 
 
         return post && (
@@ -39,6 +48,7 @@ const Post = ({match}) => {
                     </textarea>
                     </p>
                     <button type="submit">Изменить</button>
+                    <button type="button" onClick={onDeleteHandler}>Удалить</button>
                 </fieldset>
             </form>
 
